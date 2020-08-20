@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.dkatlisLab.Base.BaseClass;
 
 public class  MidTransPillowPage extends BaseClass {
@@ -72,6 +74,7 @@ public class  MidTransPillowPage extends BaseClass {
 	
 	public WebElement enterCVV()
 	{
+		 wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='input-group col-xs-5']//input")));
 		return driver.findElement(By.xpath("//div[@class='input-group col-xs-5']//input"));
 	}
 	

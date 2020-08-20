@@ -30,12 +30,11 @@ public class CreditSuccessStepDef extends BaseClass{
 
 
 @Given("^open browser and launch url$")
-public void open_browser_and_launch_url() throws Throwable {
-	
+public void open_browser_and_launch_url(){
+
 	driver.get(prop.getProperty("url"));
-	
-	
-    
+
+   
 }
 
 @When("^I clicked on Buy now$")
@@ -98,7 +97,13 @@ public void enter_valid_password() throws Throwable {
 public void click_ok() throws Throwable {
     midTransPillowPage.clickOkButton();
     
+}
 
+
+@Then("^close browser$")
+public void close() throws Throwable {
+   driver.close();
+    
 }
 
 @SuppressWarnings("deprecation")
@@ -124,11 +129,12 @@ public void enter_card_number_for_negative_scenario() throws Throwable {
 @Then("^enter invalid expiry date$")
 public void enter_invalid_expiry_date() throws Throwable {
 	midTransPillowPage.enterExpiryDate().sendKeys(prop.getProperty("invalidExpiry"));
+	Thread.sleep(5000);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='application']/div[3]/div/div/div/form/div[2]/div[2]/label")));
 	String color = driver.findElement(By.xpath("//*[@id='application']/div[3]/div/div/div/form/div[2]/div[2]/label")).getCssValue("color");
 	String hexcolorCode=Color.fromString(color).asHex();
 	Assert.assertEquals(EXPECTED_COLOR_CODE, hexcolorCode);
-	
-	
+		
 
 }
 

@@ -14,6 +14,7 @@ Then click on Pay now button
 Then enter valid password 
 And click ok
 Then verify successfull message
+And close browser
 
 @Testcase2
 Scenario: Verifying with invalid card details
@@ -26,3 +27,4 @@ Then enter card number for negative scenario
 And enter invalid expiry date
 And enter valid cvv
 Then click on Pay now button
+And close browser
